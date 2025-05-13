@@ -1,0 +1,37 @@
+This project consists of a data pipeline designed to process information on electric vehicles registered in the United States, based on a public government dataset.
+
+The complete processing flow is described below:
+
+1. DATA DOWNLOAD:
+   The first step involves downloading the dataset in CSV format from the public API available at data.gov, specifically from the following resource:
+   https://catalog.data.gov/dataset/electric-vehicle-population-data
+
+   This file contains detailed information about electric vehicles, including  year, model, geographic location, and more.
+
+2. DATA PROCESSING WITH PYTHON:
+   Once the CSV file is downloaded, a Python script is used to perform the following tasks:
+   - Reading the CSV using the `pandas` library.
+   - Data cleaning: removing empty or irrelevant rows, standardizing text and date formats, and fixing inconsistent values when necessary.
+   - Data enrichment and transformation: adding or renaming columns to facilitate later analysis.
+
+3. DATA INSERTION INTO DATABASE:
+   After processing, the data is inserted into a table within a PostgreSQL database.
+   This allows the information to be stored in a structured manner, enabling SQL queries for insights and metrics.
+
+4. EXPORT TO CSV FOR POWER BI:
+   A clean version of the dataset is then extracted from the database and exported to a new CSV file.
+   This file includes the key columns needed to perform the analysis requested by Promtior.
+
+   *Note:* Exporting from PostgreSQL to CSV was chosen instead of connecting Power BI directly to the database to avoid potential complications when configuring local PostgreSQL access in Power BI.
+
+5. ANALYSIS IN POWER BI:
+   Finally, the generated CSV is loaded into Power BI Desktop.
+   An interactive dashboard is built to answer the following questions:
+   - How many electric vehicles are registered per year?
+   - What are the top 10 most registered EV models?
+   - Where are CAFV-eligible vehicles geographically concentrated?
+   - What is the year-over-year change in registrations by county?
+
+This pipeline can be executed locally by following the instructions provided in the README.md file.
+The goal was to create a simple yet robust solution using accessible and widely-used tools such as Python, PostgreSQL, and Power BI.
+
