@@ -30,9 +30,9 @@ SUPERUSER=your_admin SUPERPASS=your_password ./run_etl.sh
 
 Steps :
 
-1 -> git clone <URL_DEL_REPO>
+1 -> git clone https://github.com/jta7/electric-vehicle-data-pipeline.git
 
-2 -> cd <nombre_del_repositorio>
+2 -> cd electric-vehicle-data-pipeline
 
 3 -> python3 -m venv venv
 
